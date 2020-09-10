@@ -1,0 +1,57 @@
+<div class="container  ">
+
+  <div class="jumbotron">
+    <p>Welcome to GitSearch, an appplication where you can search for github userd in the provided  form and receive their details. The details are displayed by use of the github API which has been intergrated.</p>
+  </div>
+
+  <app-search (searchEmmiter)='find($event)'></app-search>
+  <div *ngIf ='user' >
+    <div class="row">
+      <div class="card">
+            <div class="card-title">
+               <b>Name:</b>   {{user.name}} 
+               <b>Login:</b>   {{user.login}} 
+               <b>ID:</b>  {{user.id}}
+            </div>
+            <div class="col-md-6">
+                <img class="img-thumbnail " src="{{user.avatar_url}}" alt="User image">
+                <ul class="list-group">
+                  <li class="list-group-item" *ngIf ="user.company">Works at, {{user.company}}</li>
+                  <li class="list-group-item" *ngIf ="user.bio">{{user.bio}}</li>
+                  <li class="list-group-item" *ngIf ="user.email"><a href="{{user.email}}" target="_blank">Email</a></li>
+                </ul>
+                <div class="">
+                  <p>
+                    <span class="badge badge-danger" > Followers: {{user. followers}} </span>
+                    <span class="badge badge-success">Following: {{user. followings}}</span>
+                    <span class="badge badge-warning"> Repositories: {{user. public_repos}}</span>
+          
+                  </p>
+                </div>
+              
+            </div>
+  
+ 
+      </div>
+  
+        <div class="card col-md-6">
+          <h4>Repositories</h4>
+            <div *ngFor ="let repo of repos">
+              <ul>
+                <li> <a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></li>
+              </ul>
+            </div>
+  
+        </div>
+    </div>
+  </div>
+  
+  
+</div> 
+ 
+
+
+
+
+
+

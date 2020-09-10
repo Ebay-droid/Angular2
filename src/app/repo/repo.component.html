@@ -1,0 +1,17 @@
+<div class="container  ">
+
+  <app-search (searchEmmiter)='findRepo($event)'></app-search>
+  
+  <div *ngIf ="repos">
+    <div class="card">
+     Name:  {{repos.name}}
+    Description:  {{repos.description}}
+    <p>
+      <span class="badge badge-info">{{repos.forks}}</span>
+    </p>
+
+    </div>
+
+  </div>
+
+</div>
